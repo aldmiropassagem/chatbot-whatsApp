@@ -1,7 +1,7 @@
 services:
   evolution-api:
     container_name: evolution_api
-    image: atendai/evolution-api:v2.2.3
+    image: atendai/evolution-api:latest
     depends_on:
       - redis
     restart: always
@@ -17,6 +17,10 @@ services:
       - CACHE_REDIS_PREFIX_KEY=evolution
       - CACHE_REDIS_SAVE_INSTANCES=true
       - CACHE_LOCAL_ENABLED=false
+      - QR_CODE_TERMINAL=true
+      - CONFIG_SESSION_PHONE_CLIENT=true
+      - SERVER_PORT=8080
+      - QRCODE_COLOR=#175197
     volumes:
       - evolution_instances:/evolution/instances
     networks:
